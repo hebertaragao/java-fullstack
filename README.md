@@ -1,2 +1,2 @@
 # java-fullstack
-curso de java fullstack presencial pela Fuctura - hebertaragao/jav-fullstack
+curso de java fullstack presencial pela Fuctura - https://fucturatecnologia.com.br/
