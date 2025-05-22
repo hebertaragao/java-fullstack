@@ -18,7 +18,7 @@ public class Exercicio10 {
 		
 		//juros simples
 		
-		double precoAPrazo = precoAvista * (1 + juros + numParcelas);
+		double precoAPrazo = precoAvista * (1 + (juros * numParcelas));
 		double valorParcela = precoAPrazo / numParcelas;
 		
 		System.out.printf("%nO valor de cada parcela é R$ %.2f. %n", valorParcela);
