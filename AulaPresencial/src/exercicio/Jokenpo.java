@@ -1,4 +1,4 @@
-package condicional;
+package exercicio;
 
 import java.util.Random;
 import java.util.Scanner;
