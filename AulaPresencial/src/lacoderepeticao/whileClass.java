@@ -12,7 +12,7 @@ public class whileClass {
 			numero++;
 			
 		}
-		System.out.println("Fora do While.");
+		System.out.println("Fora do While." + " Valor de número é: " + numero);
 
 	}
 
