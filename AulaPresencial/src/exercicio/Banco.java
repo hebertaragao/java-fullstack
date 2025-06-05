@@ -7,7 +7,7 @@ public class Banco {
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
-		double saldo = 1000;
+		double saldo = 1000.0;
 		int opcao;
 
 		while (true) {
@@ -34,12 +34,12 @@ public class Banco {
 			case 2:
 				System.out.println("Digite o valor a sacar: ");
 				double saque = scan.nextDouble();
-				if (saque > 0) {
+				if (saque > 0 && saque <= saldo) {
 					if (saque <= saldo) {
 						saldo -= saque;
 						System.out.println("Saque realizado! Saldo atual: " + saldo);
 					} else {
-						System.out.println("Saldo insuficiente. ");
+						System.out.println("Valor inválido ou saldo insuficiente. ");
 					}
 				} else {
 					System.out.println("Valor inválido. ");
@@ -49,7 +49,7 @@ public class Banco {
 			case 3:
 				System.out.println("Digite o valor a transferir: ");
 				double transferencia = scan.nextDouble();
-				if(transferencia > 0) {
+				if(transferencia > 0 && transferencia <=saldo) {
 					if(transferencia <= saldo) {
 						saldo -= transferencia;
 						System.out.println("Transferência realizada! Salto atual: " + saldo);
@@ -70,10 +70,10 @@ public class Banco {
 				System.out.println("Opção inválida. Tente novamente.");
 
 			}
+			System.out.printf("Saldo atual: R$ %2.f", saldo);
 
 		}
 
-		
 
 	}
 
