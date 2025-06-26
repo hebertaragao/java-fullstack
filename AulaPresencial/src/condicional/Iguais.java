@@ -28,6 +28,8 @@ public class Iguais {
 			System.out.println("Todos os números são diferentes");
 		}
 
+		scan.close();
+
 	}
 
 }
