@@ -8,7 +8,7 @@ import biblioteca.modelo.Item;
 import biblioteca.repositorio.CategoriaDAO;
 import biblioteca.repositorio.CategoriaDAOImpl;
 import biblioteca.repositorio.ItemDAO;
-import biblioteca.repositorio.ItemDaoImpl;
+import biblioteca.repositorio.ItemDAOImpl;
 
 public class ItemService {
 	
@@ -16,7 +16,7 @@ public class ItemService {
 	private CategoriaDAO categoriaDAO;
 	
 	public ItemService(){
-		this.itemDAO = new ItemDaoImpl();
+		this.itemDAO = new ItemDAOImpl();
 		this.categoriaDAO = new CategoriaDAOImpl();
 	}
 	
@@ -59,7 +59,7 @@ public class ItemService {
 			return new java.util.ArrayList<>(); // Retorna lista vazia se a categoria não existir
 		}
 		
-		public void removerItem(int id) throws SQLException{
+		public void removerItem(int id) throws SQLException {
 			itemDAO.removerItem(id);
 		}
 	}

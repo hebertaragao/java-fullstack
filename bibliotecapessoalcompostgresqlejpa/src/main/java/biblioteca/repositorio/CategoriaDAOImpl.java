@@ -13,7 +13,7 @@ import biblioteca.modelo.Categoria;
 public class CategoriaDAOImpl {
 
 	@Override
-	public void adicionarCategoria(Categoria categoria) throws SQLExceprion {
+	public void adicionarCategoria(Categoria categoria) throws SQLException {
 		String sql = "INSERT INTO categorias (nome) VALUES (?)";
 		try (Connection conn = ConexaoBD.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -31,7 +31,7 @@ public class CategoriaDAOImpl {
 	@Override
 	public Categoria buscarCategoriaPorId(int id) throws SQLException{
 		String sql = "SELECT * FROM categorias WHERE id = ?";
-		try (Connection conn = ConexadoBD.getConnection();
+		try (Connection conn = ConexaoBD.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setInt(1, id);
 			try (ResultSet rs = stmt.executeQuery()) {
@@ -45,7 +45,7 @@ public class CategoriaDAOImpl {
 	@Override
 	public Categoria buscarCategoriaPorNome(String nome) throws SQLException {
 		String sql = "SELECT * FROM categorias WHERE nome = ?";
-		try (Connection conn = ConexãoBD.getConnection();
+		try (Connection conn = ConexaoBD.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
 			stmt.setString(1, nome);
 			try (ResultSet rs = stmt.executeQuery()) {

@@ -20,10 +20,10 @@ public class Main {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		int opção;
+		int opcao;
 		do {
 			exibirMenu();
-			opção = scanner.nextInt();
+			opcao = scanner.nextInt();
 			scanner.nextLine(); // Consumir quebra de linha
 
 			switch (opcao) {

@@ -11,7 +11,7 @@ public class CategoriaService {
 	private CategoriaDAO categoriaDAO;
 	
 	public CategoriaService() {
-		this.categoriaDAO = new CategoriaDAOIMPL();
+		this.categoriaDAO = new CategoriaDAOImpl();
 	}
 	
 	public void adicionarCategoria(Categoria categoria) throws SQLException{
