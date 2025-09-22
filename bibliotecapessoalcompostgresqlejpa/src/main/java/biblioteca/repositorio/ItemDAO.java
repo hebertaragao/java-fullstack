@@ -11,4 +11,5 @@ public interface ItemDAO {
 	Item buscarItemPorId(int id) throws SQLException;
 	List<Item> listarTodosItens() throws SQLException;
 	void removerItem(int id) throws SQLException;
+	List<Item> listarItensPorCategoria(int categoriaID) throws SQLException;
 }

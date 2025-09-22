@@ -20,7 +20,7 @@ public class ItemDAOImpl implements ItemDAO {
 				PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			stmt.setString(1, item.getTitulo());
 			stmt.setString(2, item.getAutorArtista());
-			stmt.setInt(3, item.getCategoria().getId());
+			stmt.setInt(3, item.getCategoria().getID());
 			stmt.setString(4, item.getClass().getSimpleName()); // Tipo do item (Livro, Revista, AlbumMusica)
 			if (item instanceof Livro) {
 				Livro livro = (Livro) item;
@@ -93,11 +93,11 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public List<Item> listarItensPorCategoria(int categoriaId) throws SQLException {
+	public List<Item> listarItensPorCategoria(int categoriaID) throws SQLException {
 		List<Item> itens = new ArrayList<>();
 		String sql = "SELECT * FROM itens WHERE categoria_id = ?";
 		try (Connection conn = ConexaoBD.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-			stmt.setInt(1, categoriaId);
+			stmt.setInt(1, categoriaID);
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) {
 					itens.add(criarItemDoResultSet(rs));
@@ -106,8 +106,6 @@ public class ItemDAOImpl implements ItemDAO {
 		}
 		return itens;
 	}
-
-	}}return itens;}
 
 	@Override
 	public void removerItem(int id) throws SQLException {

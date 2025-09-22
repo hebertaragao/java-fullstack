@@ -136,13 +136,13 @@ public class Main {
 				System.out.println("Nenhuma categoria cadastrada. Por favor, adicione uma nova categoria.");
 				String nomeNovaCategoria = scanner.nextLine();
 				Categoria novaCategoria = new Categoria(nomeNovaCategoria);
-				CategoriaService.adicionarCategoria(novaCategoria);
+				categoriaService.adicionarCategoria(novaCategoria);
 				System.out.println("Nova categoria \"" + nomeNovaCategoria + "\" adicionada com sucesso ");
 				return novaCategoria;
 			} else {
 				System.out.println("Categorias existentes: ");
 				for (Categoria cat : categoriasExistentes) {
-					System.out.println(cat.getId() + "." + cat.getNome());
+					System.out.println(cat.getID() + "." + cat.getNome());
 				}
 				System.out.println("Digite o ID da categoria existente ou 0 para adicionar uma nova: ");
 				int idCategoria = scanner.nextInt();
@@ -184,7 +184,7 @@ public class Main {
 			Categoria novaCategoria = new Categoria(nome);
 			categoriaService.adicionarCategoria(novaCategoria);
 			;
-			System.out.println("Categoria adicionada com sucesso! ID: " + novaCategoria.getId());
+			System.out.println("Categoria adicionada com sucesso! ID: " + novaCategoria.getID());
 		} catch (IllegalArgumentException e) {
 			System.out.println("Erro de validação: " + e.getMessage());
 		} catch (SQLException e) {

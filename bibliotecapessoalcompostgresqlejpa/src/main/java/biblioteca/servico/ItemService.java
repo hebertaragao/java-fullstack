@@ -51,7 +51,7 @@ public class ItemService {
 	public List<Item> listarItensPorCategoria(String nomeCategoria) throws SQLException {
 		Categoria categoria = categoriaDAO.buscarCategoriaPorNome(nomeCategoria);
 		if (categoria != null) {
-			return itemDAO.listarItensPorCategoria(categoria.getId());
+			return itemDAO.listarItensPorCategoria(categoria.getID());
 		} else {
 			return new java.util.ArrayList<>(); // Retorna lista vazia se a categoria não existir
 		}
