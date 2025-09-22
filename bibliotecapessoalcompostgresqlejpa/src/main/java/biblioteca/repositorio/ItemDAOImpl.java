@@ -107,6 +107,8 @@ public class ItemDAOImpl implements ItemDAO {
 		return itens;
 	}
 
+	}}return itens;}
+
 	@Override
 	public void removerItem(int id) throws SQLException {
 		String sql = "DELETE FROM itens WHERE id = ?";
