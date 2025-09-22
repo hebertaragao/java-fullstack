@@ -59,9 +59,10 @@ public class ItemService {
 			return new java.util.ArrayList<>(); // Retorna lista vazia se a categoria não existir
 		}
 		
-		public void removerItem(int id) throws SQLException {
-			itemDAO.removerItem(id);
-		}
+	}
+	
+	public void removerItem(int id) throws SQLException {
+		itemDAO.removerItem(id);
 	}
 
 }
