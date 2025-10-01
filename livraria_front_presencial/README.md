@@ -57,3 +57,22 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## ng new livraria_front_presencial   
+Creates a new Angular application and project directory, initializes the workspace structure, and generates essential configuration files.
+
+## ng serve --open
+Start the Server in the browser.
+
+## ng generate component components/Home 
+Creating a new component called Home inside the components folder.
+
+## ng generate service services/LivroService
+Creating a new service in the services folder and generating the service class file and the test file .
+
+
+
+
+ 
+
