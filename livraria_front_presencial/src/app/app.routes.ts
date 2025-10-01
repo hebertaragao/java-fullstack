@@ -1,10 +1,9 @@
-import { Routes } from '@angular/router';
-import { HomePage } from './components/home-page/home-page';
+import {Routes} from '@angular/router';
+import {HomePage} from './components/home-page/home-page';
+import {LivrosPage} from './components/livros-page/livros-page';
 
 export const routes: Routes = [
-    // Para acessar o componente, vamos declarar uma rota para ele
-{path: "home", component: HomePage },
-{path: "", redirectTo: "/home", pathMatch: 'full'}
+    { path: "home", component: HomePage},
+    { path: "livros", component: LivrosPage},
+    { path: "", redirectTo: "/home", pathMatch: 'full'},
 ];
-
-
