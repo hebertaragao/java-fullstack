@@ -9,8 +9,8 @@ export interface Livro {
   autor: string;
   titulo: string;
   texto: string;
-  categoria?: Categoria;
-  tamanho?: Tamanho;
+  categoria: Categoria;
+  tamanho: Tamanho;
 }
 
 @Component({
@@ -34,6 +34,8 @@ export class LivrosPage implements OnInit {
     autor: "",
     titulo: "",
     texto: "",
+    categoria: Categoria.FICCAO,
+    tamanho: Tamanho.Pequeno,
   };
 
   cadastrarLivro() {

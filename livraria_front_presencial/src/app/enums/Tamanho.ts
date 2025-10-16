@@ -1,5 +1,5 @@
 export enum Tamanho {
-    Pequeno = "pequeno",
-    Medio = "medio",
-    Grande = "grande",
+    Pequeno = "Pequeno",
+    Medio = "Medio",
+    Grande = "Grande",
 }
