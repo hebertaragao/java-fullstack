@@ -1,4 +1,4 @@
-package br.com.fuctura.bibliotecaNoite.model;
+package br.com.fuctura.bibliotecaNoite.models;
 
 public class Livro {
 
