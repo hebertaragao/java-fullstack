@@ -11,4 +11,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('livraria-front');
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b15b50bb03fb037d686ec359afd2f5184eecb831

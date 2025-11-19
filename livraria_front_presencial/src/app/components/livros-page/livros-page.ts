@@ -23,6 +23,7 @@ export class LivrosPage implements OnInit {
 
   constructor(private livroService: LivroService) {}
 
+<<<<<<< HEAD
   livrosFiltrados: Livro[] = [];
 
   categorias: string[] = Object.values(Categoria); // converter enum em array
@@ -41,6 +42,13 @@ export class LivrosPage implements OnInit {
         console.error("Erro ao buscar livros!", erro);
       }
     )
+=======
+  livros: Livro[] = [];
+
+  // Ciclo de vida de componentes
+  ngOnInit() {
+    this.livros = this.livroService.buscarListaLivros();
+>>>>>>> b15b50bb03fb037d686ec359afd2f5184eecb831
   }
 
   novoLivro: Omit<Livro, 'id'> = {
@@ -52,6 +60,7 @@ export class LivrosPage implements OnInit {
   };
 
   cadastrarLivro() {
+<<<<<<< HEAD
     this.livroService.cadastrarLivro(this.novoLivro).subscribe(
       (livro: Livro) => {
         alert("Livro cadastrado com sucesso!");
@@ -62,15 +71,23 @@ export class LivrosPage implements OnInit {
       }
     );
     this.livrosFiltrados = this.livroService.filtrarLivros();
+=======
+    this.livroService.cadastrarLivro(this.novoLivro);
+    this.livros = this.livroService.buscarListaLivros();
+>>>>>>> b15b50bb03fb037d686ec359afd2f5184eecb831
   }
 
   editarLivro(livroId: number) {
     this.livroService.editarLivro(livroId);
+<<<<<<< HEAD
     this.livrosFiltrados = this.livroService.filtrarLivros();
+=======
+>>>>>>> b15b50bb03fb037d686ec359afd2f5184eecb831
   }
 
   excluirLivro(livroId: number) {
     this.livroService.excluirLivro(livroId);
+<<<<<<< HEAD
     this.livrosFiltrados = this.livroService.filtrarLivros();
   }
 
@@ -84,5 +101,8 @@ export class LivrosPage implements OnInit {
     this.filtroCategoria = "";
     this.filtroTamanho = "";
     this.livrosFiltrados = this.livroService.filtrarLivros();
+=======
+    this.livros = this.livroService.buscarListaLivros();
+>>>>>>> b15b50bb03fb037d686ec359afd2f5184eecb831
   }
 }
