@@ -1,56 +1,88 @@
-import { identifierName } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { LivroService } from '../../services/livro-service';
+import { Categoria } from '../../enums/Categoria';
+import { Tamanho } from '../../enums/Tamanho';
 
-interface Livro{
+export interface Livro {
   id: number;
-  titulo: string;
   autor: string;
+  titulo: string;
   texto: string;
+  categoria: Categoria;
+  tamanho: Tamanho;
 }
 
 @Component({
   selector: 'app-livros-page',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './livros-page.html',
   styleUrl: './livros-page.css'
 })
-export class LivrosPage {
+export class LivrosPage implements OnInit {
+
+  constructor(private livroService: LivroService) {}
+
+  livrosFiltrados: Livro[] = [];
+
+  categorias: string[] = Object.values(Categoria); // converter enum em array
+  tamanhos: string[] = Object.values(Tamanho); // converter enum em array
+
+  filtroCategoria: Categoria | "" = "";
+  filtroTamanho: Tamanho | "" = "";
+
+  // Método do ciclo de vida do componente, que dispara após o componente
+  ngOnInit() {
+    this.livroService.buscarLivros().subscribe(
+      (livros) => {
+        this.livrosFiltrados = livros;
+      }, 
+      (erro) => {
+        console.error("Erro ao buscar livros!", erro);
+      }
+    )
+  }
+
   novoLivro: Omit<Livro, 'id'> = {
     autor: "",
     titulo: "",
     texto: "",
+    categoria: Categoria.FICCAO,
+    tamanho: Tamanho.Pequeno,
+  };
+
+  cadastrarLivro() {
+    this.livroService.cadastrarLivro(this.novoLivro).subscribe(
+      (livro: Livro) => {
+        alert("Livro cadastrado com sucesso!");
+        console.log(livro);
+      },
+      (erro) => {
+        console.log(erro);
+      }
+    );
+    this.livrosFiltrados = this.livroService.filtrarLivros();
   }
 
-  private novoId = 1;
-  
-  livros: Livro[] = [
-    {
-     id: 1,
-      titulo: 'Dom Casmurro',
-      autor: 'Machado de Assis',
-      texto: 'Uma das principais obras da literatura brasileira, que narra a história de Bentinho e sua obsessão por Capitu, questionando temas como ciúme, traição e a complexidade das relações humanas.'
-    },
-    {
-      id: 2,  
-      titulo: 'O Cortiço',
-      autor: 'Aluísio Azevedo',
-      texto: 'Romance naturalista que retrata a vida em um cortiço no Rio de Janeiro do século XIX, explorando as condições sociais e os instintos humanos através de personagens marcantes como João Romão e Bertoleza.'
-    },
-    {
-      id: 3,
-      titulo: 'Iracema',
-      autor: 'José de Alencar',
-      texto: 'Lenda do Ceará que conta a história de amor entre a índia Iracema e o português Martim, representando o encontro entre as culturas indígena e europeia no Brasil colonial.'
-    },
-    {
-      id: 4,
-      titulo: 'Memórias Póstumas de Brás Cubas',
-      autor: 'Machado de Assis',
-      texto: 'Romance inovador narrado por um defunto autor, que conta sua vida de forma irônica e filosófica, abordando temas como a sociedade brasileira do século XIX, vaidade e hipocrisia humana.'
-    },
-  ];
-  cadastrarLivro(){}
-  editarLivro(livroId: number){}
-  excluirLivro(livroId: number){}
+  editarLivro(livroId: number) {
+    this.livroService.editarLivro(livroId);
+    this.livrosFiltrados = this.livroService.filtrarLivros();
   }
 
+  excluirLivro(livroId: number) {
+    this.livroService.excluirLivro(livroId);
+    this.livrosFiltrados = this.livroService.filtrarLivros();
+  }
+
+  aplicarFiltros() {
+    const categoriaSelecionada = this.filtroCategoria || undefined;
+    const tamanhoSelecionado = this.filtroTamanho || undefined;
+    this.livrosFiltrados = this.livroService.filtrarLivros(categoriaSelecionada, tamanhoSelecionado);
+  }
+
+  limparFiltros() {
+    this.filtroCategoria = "";
+    this.filtroTamanho = "";
+    this.livrosFiltrados = this.livroService.filtrarLivros();
+  }
+}
