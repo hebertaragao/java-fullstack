@@ -1,4 +1,4 @@
-package br.com.fuctura.bibliotecaNoite.models;
+package br.com.fuctura.bibliotecanoite.enums;
 
 public enum Edicao {
     PRIMEIRA,

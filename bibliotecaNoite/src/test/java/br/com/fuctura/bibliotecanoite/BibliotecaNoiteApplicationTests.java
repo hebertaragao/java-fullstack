@@ -1,4 +1,4 @@
-package br.com.fuctura.bibliotecaNoite;
+package br.com.fuctura.bibliotecanoite;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
