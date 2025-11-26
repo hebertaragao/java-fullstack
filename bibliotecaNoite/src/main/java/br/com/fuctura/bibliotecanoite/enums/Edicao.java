@@ -1,7 +1,13 @@
 package br.com.fuctura.bibliotecanoite.enums;
 
 public enum Edicao {
-    PRIMEIRA,
-    SEGUNDA,
-    TERCEIRA
+    PRIMEIRA(0),
+    SEGUNDA(1),
+    TERCEIRA(2);
+
+    private final int codigo;
+
+    private Edicao(int cod){
+        this.codigo = cod;
+    }
 }
