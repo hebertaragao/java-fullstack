@@ -8,6 +8,9 @@ public interface CategoriaController {
 
     Categoria findById(Integer id);
     List<Categoria> findAll();
+
+    Categoria save(Categoria categoria);
+
     Categoria update (Integer id, Categoria categoria);
     void delete (Integer id);
 
