@@ -28,7 +28,8 @@ public class CategoriaControllerImpl implements CategoriaController {
     @Override
     @GetMapping
     public List<Categoria> findAll() {
-        return List.of();
+        List<Categoria> list = categoriaService.findAll();
+        return list;
     }
 
     @Override
