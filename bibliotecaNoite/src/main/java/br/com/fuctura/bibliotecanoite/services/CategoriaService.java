@@ -22,4 +22,7 @@ public class CategoriaService {
     public List<Categoria> findAll() {
         return categoriaRepository.findAll();
     }
+    public Categoria save(Categoria categoria) {
+        return categoriaRepository.save(categoria);
+    }
 }

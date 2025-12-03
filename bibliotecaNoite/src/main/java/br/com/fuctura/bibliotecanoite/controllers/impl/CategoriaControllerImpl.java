@@ -4,10 +4,7 @@ import br.com.fuctura.bibliotecanoite.controllers.CategoriaController;
 import br.com.fuctura.bibliotecanoite.models.Categoria;
 import br.com.fuctura.bibliotecanoite.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,8 +30,10 @@ public class CategoriaControllerImpl implements CategoriaController {
     }
 
     @Override
+    @PostMapping
     public Categoria save(Categoria categoria) {
-        return null;
+        Categoria cat = categoriaService.save(categoria);
+        return cat;
     }
     @Override
     public Categoria update(Integer id, Categoria categoria) {
