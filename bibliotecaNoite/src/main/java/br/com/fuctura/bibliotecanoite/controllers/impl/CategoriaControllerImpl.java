@@ -9,14 +9,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("categoria")
 public class CategoriaControllerImpl implements CategoriaController {
+
+    //@GetMapping("/{id}")
+    //findById = Método para buscar uma categoria pelo ID
+
+    //@GetMapping
+    //findAll = Método para listar todas as categorias
+
+    //@PostMapping
+    //save = Método para criar uma nova categoria
+
+    //@PutMapping("/{id}")
+    //update = Método para atualizar uma categoria existente
+
+    //@DeleteMapping("/{id}")
+    //delete = Método para deletar uma categoria pelo ID
 
     @Autowired
     private CategoriaService categoriaService;
 
+
     @Override
-    @GetMapping("/{id}")
+    @GetMapping(value = "{id}")
     public Categoria findById(@PathVariable Integer id) {
         Categoria categoria = categoriaService.findById(id);
         return categoria;
@@ -31,10 +47,11 @@ public class CategoriaControllerImpl implements CategoriaController {
 
     @Override
     @PostMapping
-    public Categoria save(Categoria categoria) {
+    public Categoria save(@RequestBody Categoria categoria) {
         Categoria cat = categoriaService.save(categoria);
         return cat;
     }
+
     @Override
     public Categoria update(Integer id, Categoria categoria) {
         return null;

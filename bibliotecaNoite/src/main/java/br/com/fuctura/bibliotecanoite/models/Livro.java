@@ -9,22 +9,21 @@ public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
+    private String titulo;
+
     private String autor;
     private String texto;
+    private Edicao edicao;
 
-   private Edicao edicao;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
-   @ManyToOne
-   @JoinColumn(name = "categoria_id")
-   private Categoria categoria;
+    public Livro() {}
 
-    public Livro() {
-    }
-
-    public Livro(Integer id, String nome, String autor, String texto, Edicao edicao, Categoria categoria) {
+    public Livro(Integer id, String titulo, String autor, String texto, Edicao edicao, Categoria categoria) {
         this.id = id;
-        this.nome = nome;
+        this.titulo = titulo;
         this.autor = autor;
         this.texto = texto;
         this.edicao = edicao;
@@ -39,12 +38,12 @@ public class Livro {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getAutor() {

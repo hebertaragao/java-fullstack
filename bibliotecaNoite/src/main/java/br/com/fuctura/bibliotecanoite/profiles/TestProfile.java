@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 
-@Profile("teste")
+@Profile("test")
 @Configuration
 public class TestProfile {
 
@@ -16,8 +16,7 @@ public class TestProfile {
     private DBService dbService;
 
     @PostConstruct
-    public void instanciaDB(){
+    public void instanciaDB() {
         this.dbService.instanciaDB();
     }
-
 }

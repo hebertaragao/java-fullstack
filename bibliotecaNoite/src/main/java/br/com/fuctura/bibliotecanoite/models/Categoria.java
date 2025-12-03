@@ -1,5 +1,6 @@
 package br.com.fuctura.bibliotecanoite.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,8 +15,9 @@ public class Categoria {
     private String nome;
     private String descricao;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "categoria")
-   private List<Livro> livros = new ArrayList<>();
+    private List<Livro> livros = new ArrayList<>();
 
     public Categoria() {
     }
@@ -57,5 +59,4 @@ public class Categoria {
     public void setLivros(List<Livro> livros) {
         this.livros = livros;
     }
-
 }
