@@ -60,8 +60,8 @@ public class CategoriaControllerImpl implements CategoriaController {
     }
 
     @Override
-    public void delete(Integer id) {
-        Categoria cat = 
-
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+       categoriaService.delete(id);
     }
 }
