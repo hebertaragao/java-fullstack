@@ -53,7 +53,9 @@ public class CategoriaControllerImpl implements CategoriaController {
     }
 
     @Override
+    @PutMapping("/{id}")
     public Categoria update(Integer id, Categoria categoria) {
+        Categoria cat = categoriaService.update(id, categoria);
         return null;
     }
 

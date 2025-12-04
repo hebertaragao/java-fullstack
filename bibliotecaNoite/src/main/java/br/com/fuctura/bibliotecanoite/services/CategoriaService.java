@@ -25,4 +25,8 @@ public class CategoriaService {
     public Categoria save(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
+
+    public Categoria update(Integer id, Categoria categoria) {
+        
+    }
 }
