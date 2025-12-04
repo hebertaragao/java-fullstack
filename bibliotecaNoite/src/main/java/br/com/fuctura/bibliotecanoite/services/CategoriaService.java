@@ -27,6 +27,7 @@ public class CategoriaService {
     }
 
     public Categoria update(Integer id, Categoria categoria) {
-        
+        categoria.setId(id);
+        return categoriaRepository.save(categoria);
     }
 }
