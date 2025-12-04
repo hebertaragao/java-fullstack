@@ -30,4 +30,7 @@ public class CategoriaService {
         categoria.setId(id);
         return categoriaRepository.save(categoria);
     }
+
+    public void delete(Integer id) {
+    }
 }

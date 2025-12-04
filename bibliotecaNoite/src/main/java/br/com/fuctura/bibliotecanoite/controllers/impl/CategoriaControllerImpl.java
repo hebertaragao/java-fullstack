@@ -61,6 +61,7 @@ public class CategoriaControllerImpl implements CategoriaController {
 
     @Override
     public void delete(Integer id) {
+        Categoria cat = 
 
     }
 }
