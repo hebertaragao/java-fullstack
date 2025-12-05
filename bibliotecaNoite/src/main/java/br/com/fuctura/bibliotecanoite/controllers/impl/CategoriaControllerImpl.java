@@ -1,12 +1,16 @@
 package br.com.fuctura.bibliotecanoite.controllers.impl;
 
 import br.com.fuctura.bibliotecanoite.controllers.CategoriaController;
+import br.com.fuctura.bibliotecanoite.controllers.dtos.CategoriaDto;
 import br.com.fuctura.bibliotecanoite.models.Categoria;
 import br.com.fuctura.bibliotecanoite.services.CategoriaService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("categoria")
@@ -31,18 +35,22 @@ public class CategoriaControllerImpl implements CategoriaController {
     private CategoriaService categoriaService;
 
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     @GetMapping(value = "{id}")
-    public Categoria findById(@PathVariable Integer id) {
+    public ResponseEntity<CategoriaDto> findById(@PathVariable Integer id) {
         Categoria categoria = categoriaService.findById(id);
-        return categoria;
+        return ResponseEntity.ok().body(modelMapper.map(categoria, CategoriaDto.class));
     }
 
     @Override
     @GetMapping
-    public List<Categoria> findAll() {
+    public ResponseEntity <List<CategoriaDto>> findAll() {
         List<Categoria> list = categoriaService.findAll();
-        return list;
+        return ResponseEntity.ok().body(list.stream().map(obj ->
+                modelMapper.map(obj, CategoriaDto.class)).collect(Collectors.toList()));
     }
 
     @Override
