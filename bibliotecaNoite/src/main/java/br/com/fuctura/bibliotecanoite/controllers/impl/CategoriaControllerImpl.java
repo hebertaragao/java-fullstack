@@ -55,16 +55,19 @@ public class CategoriaControllerImpl implements CategoriaController {
 
     @Override
     @PostMapping
-    public Categoria save(@RequestBody Categoria categoria) {
+    public ResponseEntity <CategoriaDto> save(@RequestBody CategoriaDto categoriaDto) {
+        Categoria categoria = modelMapper.map(categoriaDto, Categoria.class);
         Categoria cat = categoriaService.save(categoria);
-        return cat;
+        return ResponseEntity.ok().body(modelMapper.map(cat, CategoriaDto.class));
     }
 
     @Override
     @PutMapping("/{id}")
-    public Categoria update(@PathVariable Integer id,@RequestBody Categoria categoria) {
-        Categoria cat = categoriaService.update(id, categoria);
-        return cat;
+    public ResponseEntity <CategoriaDto> update(@PathVariable Integer id,@RequestBody CategoriaDto categoriaDto) {
+        Categoria categoria = modelMapper.map(categoriaDto, Categoria.class);
+        categoriaDto.setId(id);
+        Categoria cat = categoriaService.update(categoria);
+        return ResponseEntity.ok().body(modelMapper.map(cat, CategoriaDto.class));
     }
 
     @Override

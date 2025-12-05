@@ -11,11 +11,8 @@ public interface CategoriaController {
     ResponseEntity<CategoriaDto>findById(Integer id);
     ResponseEntity <List<CategoriaDto>>findAll();
 
-    Categoria save(Categoria categoria);
+    ResponseEntity <CategoriaDto> save(CategoriaDto categoriaDto);
 
-    Categoria update (Integer id, Categoria categoria);
+    ResponseEntity <CategoriaDto> update (Integer id, CategoriaDto categoriaDto);
     void delete (Integer id);
-
-
-
 }
