@@ -14,5 +14,5 @@ public interface CategoriaController {
     ResponseEntity <CategoriaDto> save(CategoriaDto categoriaDto);
 
     ResponseEntity <CategoriaDto> update (Integer id, CategoriaDto categoriaDto);
-    void delete (Integer id);
+    ResponseEntity<Void> delete(Integer id);
 }

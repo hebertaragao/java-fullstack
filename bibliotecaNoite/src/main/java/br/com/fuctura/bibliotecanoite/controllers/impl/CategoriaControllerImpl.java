@@ -72,7 +72,8 @@ public class CategoriaControllerImpl implements CategoriaController {
 
     @Override
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity <Void> delete(@PathVariable Integer id) {
        categoriaService.delete(id);
+       return ResponseEntity.noContent().build();
     }
 }
