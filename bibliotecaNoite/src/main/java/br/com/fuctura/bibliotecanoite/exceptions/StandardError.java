@@ -1,25 +1,26 @@
-package br.com.fuctura.bibliotecanoite.exceptions;
+package br.com.fuctura.bibliotecan.exceptions;
+
+import java.time.LocalDateTime;
 
 public class StandardError {
-    private Long timestamp;
+
+    private LocalDateTime timestamp;
     private Integer status;
-    private String error;
     private String message;
     private String path;
 
-    public StandardError(Long timestamp, Integer status, String error, String message, String path) {
+    public StandardError(LocalDateTime timestamp, Integer status, String message, String path) {
         this.timestamp = timestamp;
         this.status = status;
-        this.error = error;
         this.message = message;
         this.path = path;
     }
 
-    public Long getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -29,14 +30,6 @@ public class StandardError {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
     }
 
     public String getMessage() {

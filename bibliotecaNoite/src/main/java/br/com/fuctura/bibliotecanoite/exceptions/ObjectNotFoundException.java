@@ -1,8 +1,8 @@
-package br.com.fuctura.bibliotecanoite.exceptions;
+package br.com.fuctura.bibliotecan.exceptions;
 
-public class ObjectNotFoundException {
+public class ObjectNotFoundException extends RuntimeException{
 
-    public ObjectNotFoundException() {
-        super();
+    public ObjectNotFoundException(String message) {
+        super(message);
     }
 }
