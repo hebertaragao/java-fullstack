@@ -34,9 +34,9 @@ public class CategoriaControllerImpl implements CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-
     @Autowired
     private ModelMapper modelMapper;
+
 
     @Override
     @GetMapping(value = "{id}")
@@ -47,15 +47,21 @@ public class CategoriaControllerImpl implements CategoriaController {
 
     @Override
     @GetMapping
-    public ResponseEntity <List<CategoriaDto>> findAll() {
+    public ResponseEntity<List<CategoriaDto>> findAll() {
         List<Categoria> list = categoriaService.findAll();
-        return ResponseEntity.ok().body(list.stream().map(obj ->
-                modelMapper.map(obj, CategoriaDto.class)).collect(Collectors.toList()));
+//        return ResponseEntity.ok().body(list.stream().map(x ->
+//                modelMapper.map(x, CategoriaDto.class)).collect(Collectors.toList()));
+
+        List<CategoriaDto> listDto = new ArrayList<>();
+        for (Categoria obj : list) {
+            listDto.add(modelMapper.map(obj, CategoriaDto.class));
+        }
+        return ResponseEntity.ok().body(listDto);
     }
 
     @Override
     @PostMapping
-    public ResponseEntity <CategoriaDto> save(@RequestBody CategoriaDto categoriaDto) {
+    public ResponseEntity<CategoriaDto>  save(@Valid @RequestBody CategoriaDto categoriaDto) {
         Categoria categoria = modelMapper.map(categoriaDto, Categoria.class);
         Categoria cat = categoriaService.save(categoria);
         return ResponseEntity.ok().body(modelMapper.map(cat, CategoriaDto.class));
@@ -63,17 +69,17 @@ public class CategoriaControllerImpl implements CategoriaController {
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity <CategoriaDto> update(@PathVariable Integer id,@RequestBody CategoriaDto categoriaDto) {
-        Categoria categoria = modelMapper.map(categoriaDto, Categoria.class);
+    public ResponseEntity<CategoriaDto> update(@PathVariable Integer id,@Valid @RequestBody CategoriaDto categoriaDto) {
         categoriaDto.setId(id);
+        Categoria categoria = modelMapper.map(categoriaDto, Categoria.class);
         Categoria cat = categoriaService.update(categoria);
         return ResponseEntity.ok().body(modelMapper.map(cat, CategoriaDto.class));
     }
 
     @Override
     @DeleteMapping("/{id}")
-    public ResponseEntity <Void> delete(@PathVariable Integer id) {
-       categoriaService.delete(id);
-       return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        categoriaService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

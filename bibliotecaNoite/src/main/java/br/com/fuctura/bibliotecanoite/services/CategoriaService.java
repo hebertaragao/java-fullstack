@@ -1,12 +1,14 @@
-package br.com.fuctura.bibliotecan.services;
+package br.com.fuctura.bibliotecanoite.services;
 
 import br.com.fuctura.bibliotecan.exceptions.ObjectNotFoundException;
-import br.com.fuctura.bibliotecan.models.Categoria;
-import br.com.fuctura.bibliotecan.repositories.CategoriaRepository;
+import br.com.fuctura.bibliotecanoite.models.Categoria;
+import br.com.fuctura.bibliotecanoite.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -40,13 +42,18 @@ public class CategoriaService {
     }
 
     public void delete(Integer id) {
+
+        Categoria categoria = findById(id);
+        if(!categoria.getLivros().isEmpty()){
+            throw new DataIntegrityViolationException ("Categoria não pode ser deletada! Possui livros associados.");
+        }
         categoriaRepository.deleteById(id);
     }
 
     private void buscarPorNome(Categoria categoria) {
         Optional<Categoria> cat = categoriaRepository.findByNomeIgnoreCaseContaining(categoria.getNome());
         if (cat.isPresent()) {
-            if (cat.get().getId() != categoria.getId()) {
+            if (!Objects.equals(cat.get().getId(), categoria.getId())) {
                 throw new IllegalArgumentException("Categoria já existente com o nome: " + categoria.getNome());
             }
         }

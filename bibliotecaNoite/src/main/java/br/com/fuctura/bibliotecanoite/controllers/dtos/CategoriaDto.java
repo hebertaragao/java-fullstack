@@ -8,18 +8,22 @@ import java.util.List;
 public class CategoriaDto {
 
     private Integer id;
+
+    @NotNull(message = "O campo nome não pode ser nulo.")
+    @Length(min = 5, max = 15, message = "O campo nome deve ter entre 5 e 15 caracteres.")
     private String nome;
+
+    @NotNull(message = "O campo descrição não pode ser nulo.")
+    @Length(min = 5, max = 25, message = "O campo descrição deve ter entre 5 e 25 caracteres.")
     private String descricao;
-    private List<Livro> livros = new ArrayList<>();
 
-    public CategoriaDto(){
-
+    public CategoriaDto() {
     }
-    public CategoriaDto(Integer id, String nome, String descricao, List<Livro> livros) {
+
+    public CategoriaDto(Integer id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.livros = livros;
     }
 
     public Integer getId() {
@@ -46,11 +50,11 @@ public class CategoriaDto {
         this.descricao = descricao;
     }
 
-    public List<Livro> getLivros() {
-        return livros;
-    }
-
-    public void setLivros(List<Livro> livros) {
-        this.livros = livros;
-    }
+//    public List<Livro> getLivros() {
+//        return livros;
+//    }
+//
+//    public void setLivros(List<Livro> livros) {
+//        this.livros = livros;
+//    }
 }
